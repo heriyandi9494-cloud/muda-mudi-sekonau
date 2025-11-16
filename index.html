@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>webstie omksekonau-KEUSKUPAN SANGGAU</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Times New Roman', serif;
+    background: #ffffff;
+  }
+  header {
+    text-align: center;
+    padding: 25px 10px;
+  }
+  header img {
+    width: 80px;
+  }
+  header h1 {
+    font-size: 26px;
+    margin: 10px 0 0;
+    color: #b30000;
+    letter-spacing: 1px;
+  }
+  header h2 {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #555;
+  }
+
+  /* NAVIGATION */
+  .nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    background: white;
+    padding: 10px 0;
+  }
+  .nav-item {
+    position: relative;
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    min-width: 180px;
+  }
+  .nav-item:hover {
+    background: #ffe066;
+  }
+  .nav-item .dropdown  {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    display: none;
+    z-index: 10;
+  }
+  .nav-item:hover .dropdown  {
+    display: block;
+  }
+  .dropdown  a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #ddd;
+  }
+  .dropdown  a:hover {
+    background: #ffe066;
+  }
+
+  /* CONTENT */
+  .content {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  h2 {
+    color: #b30000;
+    border-bottom: 2px solid #b30000;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  .box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    background: #fafafa;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png" />
+  <h1>ORANG MUDA KATOLIK</h1>
+  <h2>St PETRUS DAN PAULUS RASUL SEKONAU</h2>
+</header>
+
+<div class="nav-container">
+  <div class="nav-item">BERANDA</div>
+
+  <div class="nav-item">PROFIL ▾
+    <div class="dropdown ">
+      <a href="#" target="_blank">Tentang OMK</a>
+      <a href="https://heriyandi9494-cloud.github.io/VISIMISI/" target="_blank">Visi & Misi</a>
+      <a href="https://heriyandi9494-cloud.github.io/struktur-omk/" target="_blank">Struktur Organisasi</a>
+    </div>
+  </div>
+
+  <div class="nav-item">KEGIATAN ▾
+    <div class="dropdown ">
+      <a href="#" target="_blank">Ibadat & Doa</a>
+      <a href="#" target="_blank">Pelayanan Sosial</a>
+      <a href="#" target="_blank">Acara Tahunan</a>
+    </div>
+  </div>
+
+  <div class="nav-item">DOKUMEN ▾
+    <div class="dropdown ">
+      <a href="#" target="_blank">Foto</a>
+      <a href="https://heriyandi9494-cloud.github.io/akses-login-omk/" target="_blank">Data OMK</a>
+      <a href="#" target="_blank">Laporan Kegiatan</a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <h2>Selamat Datang</h2>
+  <div class="box">
+    <p style="text-align:justify;">
+      Orang Muda Katolik (OMK) Sekonau adalah kelompok kategorial kaum muda yang hidup dan berkarya di wilayah Gereja St. Petrus dan Paulus Rasul Sekonau. OMK ini menjadi wadah pembinaan iman, pengembangan diri, serta sarana pelayanan bagi kaum muda Katolik di Desa Sekonau dan sekitarnya. Dalam pergerakannya, OMK Sekonau hadir sebagai kekuatan aktif yang mendukung kehidupan menggereja, membangun komunitas, serta mendorong keterlibatan kaum muda dalam berbagai kegiatan pastoral.
+    </p>
+  </div>
+
+  <h2>Informasi Terbaru</h2>
+  <div class="box">
+    <p>Masukkan pengumuman, agenda rapat, jadwal kegiatan, dan informasi lainnya.</p>
+  </div>
+</div>
+
+</body>
+</html>
