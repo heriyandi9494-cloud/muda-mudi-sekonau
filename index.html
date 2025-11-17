@@ -6,15 +6,91 @@
   <title>website omk sekonau - KEUSKUPAN SANGGAU</title>
 
   <style>
+.tree {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 80px;
+}
+
+.tree ul {
+  padding: 0;
+  position: relative;
+}
+
+.tree ul::before {
+  content: '';
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  width: 250px;
+  height: 20px;
+  background: #aaa;
+  transform: translateX(-50%);
+}
+
+.tree li {
+  list-style: none;
+  display: inline-block;
+  margin: 10px 40px;
+  position: relative;
+}
+
+.tree li::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  width: 20px;
+  height: 15px;
+  background: #aaa;
+}
+
+.tree li div {
+  padding: 25px 35px;
+  background: rgb(216, 8, 8);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(246, 243, 243, 0.1);
+  display: inline-block;
+}
+
+      /* marquee area */
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border-top: 4px solid #ffcc00; /* misal garis tipis */
+    background: rgba(237, 227, 227, 0.05);
+    padding: 8px 0;
+  }
+  .marquee__track {
+    display: inline-block;
+    padding-left: 100%; /* mulai di luar layar kanan */
+    animation: marquee 40s linear infinite;
+    font-weight: 600;
+    letter-spacing: .2px;
+  }
+  .marquee__track span { margin-right: 4rem; } /* jarak antar pesan */
+
+  /* hover untuk pause */
+  .marquee:hover .marquee__track { animation-play-state: paused; cursor: default; }
+
+  /* keyframes */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* respect reduced motion untuk aksesibilitas */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track { animation: none; }
+  }
 
     /* SLIDER HORIZONTAL (BARU) */
-    .slider-run-container {
-      width: 100%;
-      overflow: hidden;
-      background: rgba(255,255,255,0.6);
-      padding: 10px 0;
-      margin-top: 10px;
+    .slider {
+    display: flex;
+    animation: slide-run 10s linear infinite;
     }
+
 
     .slider-run-track {
       display: flex;
@@ -44,8 +120,8 @@
 
     /* Animasi jalan kanan → kiri */
     @keyframes slideRun {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
     }
 
 
@@ -81,7 +157,7 @@
     .nav-item {
       position: relative;
       background: #f1f1f1;
-      border: 1px solid #ccc;
+      border: 1px solid #e60b0b;
       padding: 10px 20px;
       cursor: pointer;
       font-weight: bold;
@@ -96,7 +172,7 @@
       left: 0;
       width: 100%;
       background: white;
-      border: 1px solid #ccc;
+      border: 1px solid #f00303;
       display: none;
       z-index: 10;
     }
@@ -166,18 +242,27 @@
     footer {
       padding: 5px 0;
       text-align: center;
-      background: rgba(231, 212, 212, 0.45);
+      background: rgba(232, 9, 9, 0.45);
       color: #fff;
     }
 
   </style>
 </head>
 <body>
-
+<header>
+  <!-- TULISAN BERJALAN: letakkan sebelum nav agar "di atas navigasi" -->
+  <div class="marquee" aria-hidden="false" role="region" aria-label="Berita penting berjalan">
+    <div class="marquee__track" tabindex="0">
+      <!-- ulangi pesan sebanyak perlu -->
+      <span>Selamat datang di Website Resmi Orang Muda Katolik (OMK) Sekonau!</span>
+      <span>Bergerak Bersama, Melayani dengan Iman.</span>
+      <span>OMK Sekonau — ‘Datang untuk Melayani, Pergi untuk Bersaksi.</span>
+    </div>
+  </div>
   <header>
     <img src="https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png" />
-    <h1>ORANG MUDA KATOLIK</h1>
-    <h2>St PETRUS DAN PAULUS RASUL SEKONAU</h2>
+    <h1>SELAMAT DATANG</h1>
+    <h2>OMK St PETRUS DAN PAULUS RASUL SEKONAU</h2>
   </header>
 
   <!-- NAVIGATION -->
@@ -220,18 +305,47 @@
   </div>
 
   <main class="content">
-    <h2 style="text-align:center;">SELAMAT DATANG</h2>
+    <h1 style="text-align:center;">TENTANG OMK</h1>
     <div class="box">
       <p style="text-align:justify;">
-        Orang Muda Katolik (OMK) Sekonau adalah kelompok kategorial kaum muda yang hidup dan berkarya di wilayah Gereja St. Petrus dan Paulus Rasul Sekonau. OMK ini menjadi wadah pembinaan iman, pengembangan diri, serta sarana pelayanan bagi kaum muda Katolik di Desa Sekonau dan sekitarnya. Dalam pergerakannya, OMK Sekonau hadir sebagai kekuatan aktif yang mendukung kehidupan menggereja, membangun komunitas, serta mendorong keterlibatan kaum muda dalam berbagai kegiatan pastoral.
+        𝐎𝐫𝐚𝐧𝐠 𝐌𝐮𝐝𝐚 𝐊𝐚𝐭𝐨𝐥𝐢𝐤 (𝐎𝐌𝐊) 𝐒𝐞𝐤𝐨𝐧𝐚𝐮 𝐚𝐝𝐚𝐥𝐚𝐡 𝐤𝐞𝐥𝐨𝐦𝐩𝐨𝐤 𝐤𝐚𝐭𝐞𝐠𝐨𝐫𝐢𝐚𝐥 𝐤𝐚𝐮𝐦 𝐦𝐮𝐝𝐚 𝐲𝐚𝐧𝐠 𝐡𝐢𝐝𝐮𝐩 𝐝𝐚𝐧 𝐛𝐞𝐫𝐤𝐚𝐫𝐲𝐚 𝐝𝐢 𝐰𝐢𝐥𝐚𝐲𝐚𝐡 𝐆𝐞𝐫𝐞𝐣𝐚 𝐒𝐭. 𝐏𝐞𝐭𝐫𝐮𝐬 𝐝𝐚𝐧 𝐏𝐚𝐮𝐥𝐮𝐬 𝐑𝐚𝐬𝐮𝐥 𝐒𝐞𝐤𝐨𝐧𝐚𝐮. 𝐎𝐌𝐊 𝐢𝐧𝐢 𝐦𝐞𝐧𝐣𝐚𝐝𝐢 𝐰𝐚𝐝𝐚𝐡 𝐩𝐞𝐦𝐛𝐢𝐧𝐚𝐚𝐧 𝐢𝐦𝐚𝐧, 𝐩𝐞𝐧𝐠𝐞𝐦𝐛𝐚𝐧𝐠𝐚𝐧 𝐝𝐢𝐫𝐢, 𝐬𝐞𝐫𝐭𝐚 𝐬𝐚𝐫𝐚𝐧𝐚 𝐩𝐞𝐥𝐚𝐲𝐚𝐧𝐚𝐧 𝐛𝐚𝐠𝐢 𝐤𝐚𝐮𝐦 𝐦𝐮𝐝𝐚 𝐊𝐚𝐭𝐨𝐥𝐢𝐤 𝐝𝐢 𝐃𝐞𝐬𝐚 𝐒𝐞𝐤𝐨𝐧𝐚𝐮 𝐝𝐚𝐧 𝐬𝐞𝐤𝐢𝐭𝐚𝐫𝐧𝐲𝐚. 𝐃𝐚𝐥𝐚𝐦 𝐩𝐞𝐫𝐠𝐞𝐫𝐚𝐤𝐚𝐧𝐧𝐲𝐚, 𝐎𝐌𝐊 𝐒𝐞𝐤𝐨𝐧𝐚𝐮 𝐡𝐚𝐝𝐢𝐫 𝐬𝐞𝐛𝐚𝐠𝐚𝐢 𝐤𝐞𝐤𝐮𝐚𝐭𝐚𝐧 𝐚𝐤𝐭𝐢𝐟 𝐲𝐚𝐧𝐠 𝐦𝐞𝐧𝐝𝐮𝐤𝐮𝐧𝐠 𝐤𝐞𝐡𝐢𝐝𝐮𝐩𝐚𝐧 𝐦𝐞𝐧𝐠𝐠𝐞𝐫𝐞𝐣𝐚, 𝐦𝐞𝐦𝐛𝐚𝐧𝐠𝐮𝐧 𝐤𝐨𝐦𝐮𝐧𝐢𝐭𝐚𝐬, 𝐬𝐞𝐫𝐭𝐚 𝐦𝐞𝐧𝐝𝐨𝐫𝐨𝐧𝐠 𝐤𝐞𝐭𝐞𝐫𝐥𝐢𝐛𝐚𝐭𝐚𝐧 𝐤𝐚𝐮𝐦 𝐦𝐮𝐝𝐚 𝐝𝐚𝐥𝐚𝐦 𝐛𝐞𝐫𝐛𝐚𝐠𝐚𝐢 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐩𝐚𝐬𝐭𝐨𝐫𝐚𝐥.
       </p>
     </div>
+    </main>
 
-    <h2>Informasi Terbaru</h2>
+  <main class="content">
+    <h1>VISI</h1>
     <div class="box">
-      <p>Masukkan pengumuman, agenda rapat dan lainnya.</p>
+      <p style="text-align:justify;">𝐌𝐞𝐰𝐮𝐣𝐮𝐝𝐤𝐚𝐧 𝐎𝐫𝐚𝐧𝐠 𝐌𝐮𝐝𝐚 𝐊𝐚𝐭𝐨𝐥𝐢𝐤 𝐒𝐞𝐤𝐨𝐧𝐚𝐮 𝐲𝐚𝐧𝐠 𝐛𝐞𝐫𝐢𝐦𝐚𝐧 𝐤𝐮𝐚𝐭, 𝐩𝐞𝐧𝐮𝐡 𝐩𝐞𝐫𝐬𝐚𝐮𝐝𝐚𝐫𝐚𝐚𝐧, 𝐤𝐫𝐞𝐚𝐭𝐢𝐟, 𝐝𝐚𝐧 𝐬𝐢𝐚𝐩 𝐦𝐞𝐥𝐚𝐲𝐚𝐧𝐢 𝐆𝐞𝐫𝐞𝐣𝐚 𝐬𝐞𝐫𝐭𝐚 𝐦𝐚𝐬𝐲𝐚𝐫𝐚𝐤𝐚𝐭.</p>
     </div>
   </main>
+
+  <main class="content">
+    <h1>MISI</h1>
+    <div class="box">
+      <p style="text-align:justify;">⏩𝐌𝐞𝐧𝐠𝐞𝐦𝐛𝐚𝐧𝐠𝐤𝐚𝐧 𝐩𝐞𝐦𝐛𝐢𝐧𝐚𝐚𝐧 𝐢𝐦𝐚𝐧 𝐦𝐞𝐥𝐚𝐥𝐮𝐢 𝐩𝐞𝐧𝐝𝐚𝐥𝐚𝐦𝐚𝐧 𝐊𝐢𝐭𝐚𝐛 𝐒𝐮𝐜𝐢, 𝐝𝐞𝐯𝐨𝐬𝐢, 𝐫𝐞𝐤𝐨𝐥𝐞𝐤𝐬𝐢, 𝐝𝐚𝐧 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐫𝐨𝐡𝐚𝐧𝐢 𝐥𝐚𝐢𝐧𝐧𝐲𝐚.</p>
+      <p style="text-align:justify;">⏩𝐌𝐞𝐧𝐮𝐦𝐛𝐮𝐡𝐤𝐚𝐧 𝐬𝐞𝐦𝐚𝐧𝐠𝐚𝐭 𝐩𝐞𝐫𝐬𝐚𝐮𝐝𝐚𝐫𝐚𝐚𝐧 𝐝𝐢 𝐚𝐧𝐭𝐚𝐫𝐚 𝐨𝐫𝐚𝐧𝐠 𝐦𝐮𝐝𝐚 𝐦𝐞𝐥𝐚𝐥𝐮𝐢 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐤𝐫𝐞𝐚𝐭𝐢𝐟, 𝐤𝐞𝐛𝐞𝐫𝐬𝐚𝐦𝐚𝐚𝐧, 𝐝𝐚𝐧 𝐩𝐞𝐥𝐚𝐲𝐚𝐧𝐚𝐧 𝐛𝐞𝐫𝐬𝐚𝐦𝐚.</p>
+      <p style="text-align:justify;">⏩𝐓𝐞𝐫𝐥𝐢𝐛𝐚𝐭 𝐚𝐤𝐭𝐢𝐟 𝐝𝐚𝐥𝐚𝐦 𝐥𝐢𝐭𝐮𝐫𝐠𝐢 𝐆𝐞𝐫𝐞𝐣𝐚, 𝐬𝐞𝐩𝐞𝐫𝐭𝐢 𝐩𝐚𝐝𝐮𝐚𝐧 𝐬𝐮𝐚𝐫𝐚, 𝐥𝐞𝐤𝐭𝐨𝐫, 𝐦𝐢𝐬𝐝𝐢𝐧𝐚𝐫, 𝐝𝐚𝐧 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐩𝐚𝐬𝐭𝐨𝐫𝐚𝐥 𝐥𝐚𝐢𝐧𝐧𝐲𝐚.</p>
+      <p style="text-align:justify;">⏩𝐌𝐞𝐥𝐚𝐲𝐚𝐧𝐢 𝐮𝐦𝐚𝐭 𝐝𝐚𝐧 𝐦𝐚𝐬𝐲𝐚𝐫𝐚𝐤𝐚𝐭 𝐦𝐞𝐥𝐚𝐥𝐮𝐢 𝐚𝐤𝐬𝐢 𝐬𝐨𝐬𝐢𝐚𝐥, 𝐤𝐞𝐫𝐣𝐚 𝐛𝐚𝐤𝐭𝐢, 𝐩𝐞𝐥𝐚𝐲𝐚𝐧𝐚𝐧 𝐤𝐚𝐬𝐢𝐡, 𝐝𝐚𝐧 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐬𝐨𝐥𝐢𝐝𝐚𝐫𝐢𝐭𝐚𝐬.</p>
+      <p style="text-align:justify;">⏩𝐌𝐞𝐧𝐣𝐚𝐝𝐢 𝐬𝐚𝐤𝐬𝐢 𝐊𝐫𝐢𝐬𝐭𝐮𝐬 𝐝𝐚𝐥𝐚𝐦 𝐤𝐞𝐡𝐢𝐝𝐮𝐩𝐚𝐧 𝐬𝐞𝐡𝐚𝐫𝐢-𝐡𝐚𝐫𝐢 𝐝𝐞𝐧𝐠𝐚𝐧 𝐦𝐞𝐦𝐛𝐚𝐰𝐚 𝐝𝐚𝐦𝐩𝐚𝐤 𝐩𝐨𝐬𝐢𝐭𝐢𝐟 𝐝𝐢 𝐬𝐞𝐤𝐨𝐥𝐚𝐡, 𝐤𝐞𝐥𝐮𝐚𝐫𝐠𝐚, 𝐝𝐚𝐧 𝐥𝐢𝐧𝐠𝐤𝐮𝐧𝐠𝐚𝐧 𝐦𝐚𝐬𝐲𝐚𝐫𝐚𝐤𝐚𝐭.</p>
+    </div>
+  </main>
+
+  <main class="content">
+  <h1>STRUKTUR ORGANISASI OMK</h1>
+<div class="tree">
+  <ul>
+    <li><div>Pembina<br>(HERI)</div></li>
+    <li><div>Ketua<br>(MARISA RISMA)</div></li>
+  </ul>
+
+  <ul>
+    <li><div>Wakil Ketua<br>(IKNASIUS KARLO)</div></li>
+    <li><div>Sekretaris<br>(YULITA TIKA)</div></li>
+    <li><div>Bendahara<br>(IKNASIUS KARLO)</div></li>
+  </ul>
+</div>
+</main>
 
   <div class="floating-bubbles">
     <a href="https://facebook.com" class="bubble fb">FB</a>
