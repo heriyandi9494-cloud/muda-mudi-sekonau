@@ -1,372 +1,361 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>website omk sekonau - KEUSKUPAN SANGGAU</title>
-
-  <style>
-.tree {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  margin-top: 80px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bagan OMK Sekonau - Tambah & Hapus</title>
+<style>
+body {
+  background-image: url('https://i.postimg.cc/5tXj9NRJ/pngtree-professional-managing-digital-network-connections-with-interactive-interface-picture-image-1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.tree ul {
-  padding: 0;
-  position: relative;
-}
-
-.tree ul::before {
-  content: '';
-  position: absolute;
-  top: 35px;
-  left: 50%;
-  width: 250px;
-  height: 20px;
-  background: #aaa;
-  transform: translateX(-50%);
-}
-
-.tree li {
-  list-style: none;
-  display: inline-block;
-  margin: 10px 40px;
-  position: relative;
-}
-
-.tree li::before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  width: 20px;
-  height: 15px;
-  background: #aaa;
-}
-
-.tree li div {
-  padding: 25px 35px;
-  background: rgb(74, 220, 34);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(246, 243, 243, 0.1);
-  display: inline-block;
-}
-
-      /* marquee area */
-  .marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    box-sizing: border-box;
-    border-top: 4px solid #ffcc00; /* misal garis tipis */
-    background: rgba(237, 227, 227, 0.05);
-    padding: 8px 0;
-  }
-  .marquee__track {
-    display: inline-block;
-    padding-left: 100%; /* mulai di luar layar kanan */
-    animation: marquee 40s linear infinite;
-    font-weight: 600;
-    letter-spacing: .2px;
-  }
-  .marquee__track span { margin-right: 4rem; } /* jarak antar pesan */
-
-  /* hover untuk pause */
-  .marquee:hover .marquee__track { animation-play-state: paused; cursor: default; }
-
-  /* keyframes */
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
+  header {
+    text-align: center;
+    padding: 30px 10px 20px 10px;
+    background: linear-gradient(to right, #c4de04, #ebf311);
+    color: rgb(247, 4, 4);
   }
 
-  /* respect reduced motion untuk aksesibilitas */
-  @media (prefers-reduced-motion: reduce) {
-    .marquee__track { animation: none; }
+  header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
   }
 
-    /* SLIDER HORIZONTAL (BARU) */
-    .slider {
+  .org-chart {
     display: flex;
-    animation: slide-run 10s linear infinite;
-    }
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
 
+  .level {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
 
-    .slider-run-track {
-      display: flex;
-      width: max-content;
-      animation: slideRun 35s linear infinite;  /* UBAH KECEPATAN DI SINI */
-    }
+  .card {
+    background: rgb(188, 240, 3);
+    border-radius: 12px;
+    padding: 35px;
+    width: 140px;
+    text-align: center;E
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
 
-    /* gambar slider */
-    .slider-run-track img {
-      width: 330px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin: 0 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.35);
-      transition: transform 0.4s ease;
-    }
+  .card.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    /* HOVER: STOP + ZOOM */
-    .slider-run-container:hover .slider-run-track {
-      animation-play-state: paused;   /* BERHENTI SAAT HOVER */
-    }
+  .card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
 
-    .slider-run-track img:hover {
-      transform: scale(1.06);         /* PERBESAR GAMBAR */
-    }
+  .card h3 {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #004080;
+  }
 
-    /* Animasi jalan kanan → kiri */
-    @keyframes slideRun {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-    }
+  .card p {
+    margin: 0;
+    font-size: 0.85em;
+    color: #555;
+  }
 
+  .slider-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #004080 #f5f7fa;
+    margin-bottom: 20px;
+  }
 
-    /* === KODE ANDA TETAP === */
+  .slider-container::-webkit-scrollbar {
+    height: 8px;
+  }
 
-    body {
-      margin: 0;
-      font-family: 'Times New Roman', serif;
-      background-image: url('https://i.postimg.cc/3x5cdgpD/ilustrasi-ucapan-natal.jpg');
-      background-size: cover;
-      background-position: center;
-      min-height: 100vh;
-      display: flex;
+  .slider-container::-webkit-scrollbar-thumb {
+    background: #004080;
+    border-radius: 4px;
+  }
+
+  .slider-container::-webkit-scrollbar-track {
+    background: #f5f7fa;
+  }
+
+  @media (max-width: 600px) {
+    .level {
       flex-direction: column;
+      gap: 30px;
     }
-    header {
-      text-align: center;
-      padding: 25px 10px;
-      background: rgba(255,255,255,0.85);
-    }
-    header img { width: 80px; }
-    header h1 { font-size: 26px; margin: 10px 0 0; color: #b30000; }
-    header h2 { font-size: 14px; margin: 5px 0; color: #555; }
-
-
-    .nav-container {
-      display: flex;
-      justify-content: center;
-      background: white;
-      padding: 10px 0;
-      flex-wrap: wrap;
-    }
-    .nav-item {
-      position: relative;
-      background: #f1f1f1;
-      border: 1px solid #e60b0b;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-weight: bold;
-      min-width: 160px;
-      text-align: center;
-    }
-    .nav-item:hover { background: #ffe066; }
-
-    .nav-item .dropdown {
-      position: absolute;
-      top: 48px;
-      left: 0;
-      width: 100%;
-      background: white;
-      border: 1px solid #0dc50a;
-      display: none;
-      z-index: 10;
-    }
-    .nav-item:hover .dropdown { display: block; }
-
-    .dropdown a {
-      display: block;
-      padding: 12px;
-      text-decoration: none;
-      color: black;
-      border-bottom: 1px solid #ddd;
-    }
-    .dropdown a:hover { background: #ffe066; }
-
-
-    .content {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
-      background: rgba(255,255,255,0.85);
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-      flex: 1 0 auto;
-    }
-
-    h2 { color: #b30000; border-bottom: 2px solid #b30000; padding-bottom: 5px; display: inline-block; }
-
-    .box {
-      border: 1px solid #ddd;
-      padding: 20px;
-      margin: 20px 0;
-      background: #fafafa;
-      border-radius: 5px;
-    }
-
-    .floating-bubbles {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
+    .slider-container {
       gap: 15px;
-      z-index: 999;
     }
-
-.bubble {
-  width: 90px;
-  height: 90px;
-  border-radius: 500%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: bold;
-  font-size: 18px;
-  text-decoration: none;
-  background-size: cover;      /* Tambahkan */
-  background-position: center; /* Tambahkan */
-  background-repeat: no-repeat;/* Tambahkan */
-  box-shadow: 0 60px 180px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
-}
-
-.bubble.fb { 
-  background-image: url("https://i.postimg.cc/fTSJMtYw/original-a29ce836969d14cfaa31c96d3ef6aab3.gif");
-}
-
-.bubble.wa { 
-  background-image: url("https://i.postimg.cc/NfKpY4NM/whatsapp-call.gif"); 
-}
-
-.bubble.ig { 
-  background-image: url("https://i.postimg.cc/sxkS3pXJ/18-26-48-450-512.gif");
-}
-
-.bubble:hover { 
-  transform: scale(1.2); 
-}
-
-
-    footer {
-      padding: 5px 0;
-      text-align: center;
-      background: rgba(15, 184, 77, 0.45);
-      color: #fff;
+    .card {
+      width: 120px;
     }
+  }
 
-  </style>
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+  }
+
+  .modal-content {
+    background: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .modal-content img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    color: #000;
+  }
+
+  /* Tombol tambah */
+  .add-button {
+    background: #004080;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px 0;
+    font-size: 0.9em;
+  }
+
+  .add-button:hover {
+    background: #0066cc;
+  }
+
+  /* Tombol hapus (untuk semua card baru) */
+  .remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+</style>
 </head>
 <body>
+
 <header>
-  <!-- TULISAN BERJALAN: letakkan sebelum nav agar "di atas navigasi" -->
-  <div class="marquee" aria-hidden="false" role="region" aria-label="Berita penting berjalan">
-    <div class="marquee__track" tabindex="0">
-      <!-- ulangi pesan sebanyak perlu -->
-      <span>Selamat datang di Website Resmi Orang Muda Katolik (OMK) Sekonau!</span>
-      <span>Bergerak Bersama, Melayani dengan Iman.</span>
-      <span>OMK Sekonau — ‘Datang untuk Melayani, Pergi untuk Bersaksi.</span>
-    </div>
-  </div>
-  <header>
-    <img src="https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png" />
-    <h1>SELAMAT DATANG</h1>
-    <h2>OMK St PETRUS DAN PAULUS RASUL SEKONAU</h2>
-  </header>
+  <h1>𝐒𝐭𝐫𝐮𝐤𝐭𝐮𝐫 𝐊𝐞𝐩𝐞𝐧𝐠𝐮𝐫𝐮𝐬𝐚𝐧 𝐎𝐌𝐊 𝐒𝐞𝐤𝐨𝐧𝐚𝐮</h1>
+</header>
 
-  <!-- NAVIGATION -->
-  <div class="nav-container">
-    <div class="nav-item">BERANDA</div>
+<div class="org-chart">
 
-    <div class="nav-item">PROFIL ▾
-      <div class="dropdown">
-        <a href="#">Tentang OMK</a>
-        <a href="https://heriyandi9494-cloud.github.io/VISIMISI/" target="_blank">Visi & Misi</a>
-        <a href="https://heriyandi9494-cloud.github.io/struktur-omk/" target="_blank">Struktur Organisasi</a>
-      </div>
-    </div>
-
-    <div class="nav-item">KEGIATAN ▾
-      <div class="dropdown">
-        <a href="#">Ibadat & Doa</a>
-        <a href="#">Pelayanan Sosial</a>
-        <a href="#">Acara Tahunan</a>
-      </div>
-    </div>
-
-    <div class="nav-item">DOKUMEN ▾
-      <div class="dropdown">
-        <a href="#">Foto</a>
-        <a href="https://heriyandi9494-cloud.github.io/databaseomksekonau/" target="_blank">Data OMK</a>
-        <a href="#">Laporan Kegiatan</a>
-      </div>
+  <!-- Level Hierarki -->
+  <div class="level">
+    <div class="card" onclick="openModal('𝐇𝐄𝐑𝐈','Pembina','https://i.postimg.cc/5NgZy98Z/Screenshot-17.png','Pembina OMK Sekonau.')">
+      <img src="https://i.postimg.cc/5NgZy98Z/Screenshot-17.png" alt="𝐏𝐄𝐌𝐁𝐈𝐍𝐀">
+      <h3>𝐇𝐄𝐑𝐈</h3>
+      <p>Melakukan pembinaan secara khusus</p>
     </div>
   </div>
 
-  <!-- SLIDER HORIZONTAL BARU -->
-  <div class="slider-run-container">
-    <div class="slider-run-track">
-      <img src="https://i.postimg.cc/Y9zpsr7r/sfklkzcz.webp">
-      <img src="https://i.postimg.cc/pr5g4t4s/Screenshot-16.png">
-      <img src="https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png">
-      <img src="https://i.postimg.cc/pXfK28Bf/2025-merry-christmas-happy-new-year-3d-glod-text-number-social-media-post-design-10969655.webp">
+  <div class="level">
+    <div class="card" onclick="openModal('𝐌𝐀𝐑𝐈𝐒𝐀 𝐑𝐈𝐒𝐌𝐀','Ketua','https://i.postimg.cc/q7ywtQ9S/Screenshot-18.png','Ketua OMK Sekonau.')">
+      <img src="https://i.postimg.cc/q7ywtQ9S/Screenshot-18.png" alt="Ketua">
+      <h3>𝐌𝐀𝐑𝐈𝐒𝐀 𝐑𝐈𝐒𝐌𝐀</h3>
+      <p>Ketua</p>
     </div>
   </div>
 
-  <main class="content">
-    <h1 style="text-align:center;">TENTANG OMK</h1>
-    <div class="box">
-      <p style="text-align:justify;">
-        𝐎𝐫𝐚𝐧𝐠 𝐌𝐮𝐝𝐚 𝐊𝐚𝐭𝐨𝐥𝐢𝐤 (𝐎𝐌𝐊) 𝐒𝐞𝐤𝐨𝐧𝐚𝐮 𝐚𝐝𝐚𝐥𝐚𝐡 𝐤𝐞𝐥𝐨𝐦𝐩𝐨𝐤 𝐤𝐚𝐭𝐞𝐠𝐨𝐫𝐢𝐚𝐥 𝐤𝐚𝐮𝐦 𝐦𝐮𝐝𝐚 𝐲𝐚𝐧𝐠 𝐡𝐢𝐝𝐮𝐩 𝐝𝐚𝐧 𝐛𝐞𝐫𝐤𝐚𝐫𝐲𝐚 𝐝𝐢 𝐰𝐢𝐥𝐚𝐲𝐚𝐡 𝐆𝐞𝐫𝐞𝐣𝐚 𝐒𝐭. 𝐏𝐞𝐭𝐫𝐮𝐬 𝐝𝐚𝐧 𝐏𝐚𝐮𝐥𝐮𝐬 𝐑𝐚𝐬𝐮𝐥 𝐒𝐞𝐤𝐨𝐧𝐚𝐮. 𝐎𝐌𝐊 𝐢𝐧𝐢 𝐦𝐞𝐧𝐣𝐚𝐝𝐢 𝐰𝐚𝐝𝐚𝐡 𝐩𝐞𝐦𝐛𝐢𝐧𝐚𝐚𝐧 𝐢𝐦𝐚𝐧, 𝐩𝐞𝐧𝐠𝐞𝐦𝐛𝐚𝐧𝐠𝐚𝐧 𝐝𝐢𝐫𝐢, 𝐬𝐞𝐫𝐭𝐚 𝐬𝐚𝐫𝐚𝐧𝐚 𝐩𝐞𝐥𝐚𝐲𝐚𝐧𝐚𝐧 𝐛𝐚𝐠𝐢 𝐤𝐚𝐮𝐦 𝐦𝐮𝐝𝐚 𝐊𝐚𝐭𝐨𝐥𝐢𝐤 𝐝𝐢 𝐃𝐞𝐬𝐚 𝐒𝐞𝐤𝐨𝐧𝐚𝐮 𝐝𝐚𝐧 𝐬𝐞𝐤𝐢𝐭𝐚𝐫𝐧𝐲𝐚. 𝐃𝐚𝐥𝐚𝐦 𝐩𝐞𝐫𝐠𝐞𝐫𝐚𝐤𝐚𝐧𝐧𝐲𝐚, 𝐎𝐌𝐊 𝐒𝐞𝐤𝐨𝐧𝐚𝐮 𝐡𝐚𝐝𝐢𝐫 𝐬𝐞𝐛𝐚𝐠𝐚𝐢 𝐤𝐞𝐤𝐮𝐚𝐭𝐚𝐧 𝐚𝐤𝐭𝐢𝐟 𝐲𝐚𝐧𝐠 𝐦𝐞𝐧𝐝𝐮𝐤𝐮𝐧𝐠 𝐤𝐞𝐡𝐢𝐝𝐮𝐩𝐚𝐧 𝐦𝐞𝐧𝐠𝐠𝐞𝐫𝐞𝐣𝐚, 𝐦𝐞𝐦𝐛𝐚𝐧𝐠𝐮𝐧 𝐤𝐨𝐦𝐮𝐧𝐢𝐭𝐚𝐬, 𝐬𝐞𝐫𝐭𝐚 𝐦𝐞𝐧𝐝𝐨𝐫𝐨𝐧𝐠 𝐤𝐞𝐭𝐞𝐫𝐥𝐢𝐛𝐚𝐭𝐚𝐧 𝐤𝐚𝐮𝐦 𝐦𝐮𝐝𝐚 𝐝𝐚𝐥𝐚𝐦 𝐛𝐞𝐫𝐛𝐚𝐠𝐚𝐢 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐩𝐚𝐬𝐭𝐨𝐫𝐚𝐥.
-      </p>
+  <div class="level">
+    <div class="card" onclick="openModal('𝐘𝐔𝐋𝐈𝐓𝐀 𝐓𝐈𝐊𝐀','Sekretaris','https://i.postimg.cc/DZ5qsN5Z/Screenshot-19.png','Sekretaris OMK.')">
+      <img src="https://i.postimg.cc/DZ5qsN5Z/Screenshot-19.png" alt="Sekretaris">
+      <h3>𝐘𝐔𝐋𝐈𝐓𝐀 𝐓𝐈𝐊𝐀</h3>
+      <p>Sekretaris</p>
     </div>
-    </main>
-
-  <main class="content">
-    <h1>VISI</h1>
-    <div class="box">
-      <p style="text-align:justify;">𝐌𝐞𝐰𝐮𝐣𝐮𝐝𝐤𝐚𝐧 𝐎𝐫𝐚𝐧𝐠 𝐌𝐮𝐝𝐚 𝐊𝐚𝐭𝐨𝐥𝐢𝐤 𝐒𝐞𝐤𝐨𝐧𝐚𝐮 𝐲𝐚𝐧𝐠 𝐛𝐞𝐫𝐢𝐦𝐚𝐧 𝐤𝐮𝐚𝐭, 𝐩𝐞𝐧𝐮𝐡 𝐩𝐞𝐫𝐬𝐚𝐮𝐝𝐚𝐫𝐚𝐚𝐧, 𝐤𝐫𝐞𝐚𝐭𝐢𝐟, 𝐝𝐚𝐧 𝐬𝐢𝐚𝐩 𝐦𝐞𝐥𝐚𝐲𝐚𝐧𝐢 𝐆𝐞𝐫𝐞𝐣𝐚 𝐬𝐞𝐫𝐭𝐚 𝐦𝐚𝐬𝐲𝐚𝐫𝐚𝐤𝐚𝐭.</p>
+    <div class="card" onclick="openModal('𝐈𝐊𝐍𝐀𝐒𝐈𝐔𝐒 𝐊𝐀𝐑𝐋𝐎','Bendahara','https://i.postimg.cc/Zn2vxzNF/Screenshot-20.png','Bendahara OMK.')">
+      <img src="https://i.postimg.cc/Zn2vxzNF/Screenshot-20.png" alt="Bendahara">
+      <h3>𝐈𝐊𝐍𝐀𝐒𝐈𝐔𝐒 𝐊𝐀𝐑𝐋𝐎</h3>
+      <p>Bendahara</p>
     </div>
-  </main>
+  </div>
 
-  <main class="content">
-    <h1>MISI</h1>
-    <div class="box">
-      <p style="text-align:justify;">⏩𝐌𝐞𝐧𝐠𝐞𝐦𝐛𝐚𝐧𝐠𝐤𝐚𝐧 𝐩𝐞𝐦𝐛𝐢𝐧𝐚𝐚𝐧 𝐢𝐦𝐚𝐧 𝐦𝐞𝐥𝐚𝐥𝐮𝐢 𝐩𝐞𝐧𝐝𝐚𝐥𝐚𝐦𝐚𝐧 𝐊𝐢𝐭𝐚𝐛 𝐒𝐮𝐜𝐢, 𝐝𝐞𝐯𝐨𝐬𝐢, 𝐫𝐞𝐤𝐨𝐥𝐞𝐤𝐬𝐢, 𝐝𝐚𝐧 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐫𝐨𝐡𝐚𝐧𝐢 𝐥𝐚𝐢𝐧𝐧𝐲𝐚.</p>
-      <p style="text-align:justify;">⏩𝐌𝐞𝐧𝐮𝐦𝐛𝐮𝐡𝐤𝐚𝐧 𝐬𝐞𝐦𝐚𝐧𝐠𝐚𝐭 𝐩𝐞𝐫𝐬𝐚𝐮𝐝𝐚𝐫𝐚𝐚𝐧 𝐝𝐢 𝐚𝐧𝐭𝐚𝐫𝐚 𝐨𝐫𝐚𝐧𝐠 𝐦𝐮𝐝𝐚 𝐦𝐞𝐥𝐚𝐥𝐮𝐢 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐤𝐫𝐞𝐚𝐭𝐢𝐟, 𝐤𝐞𝐛𝐞𝐫𝐬𝐚𝐦𝐚𝐚𝐧, 𝐝𝐚𝐧 𝐩𝐞𝐥𝐚𝐲𝐚𝐧𝐚𝐧 𝐛𝐞𝐫𝐬𝐚𝐦𝐚.</p>
-      <p style="text-align:justify;">⏩𝐓𝐞𝐫𝐥𝐢𝐛𝐚𝐭 𝐚𝐤𝐭𝐢𝐟 𝐝𝐚𝐥𝐚𝐦 𝐥𝐢𝐭𝐮𝐫𝐠𝐢 𝐆𝐞𝐫𝐞𝐣𝐚, 𝐬𝐞𝐩𝐞𝐫𝐭𝐢 𝐩𝐚𝐝𝐮𝐚𝐧 𝐬𝐮𝐚𝐫𝐚, 𝐥𝐞𝐤𝐭𝐨𝐫, 𝐦𝐢𝐬𝐝𝐢𝐧𝐚𝐫, 𝐝𝐚𝐧 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐩𝐚𝐬𝐭𝐨𝐫𝐚𝐥 𝐥𝐚𝐢𝐧𝐧𝐲𝐚.</p>
-      <p style="text-align:justify;">⏩𝐌𝐞𝐥𝐚𝐲𝐚𝐧𝐢 𝐮𝐦𝐚𝐭 𝐝𝐚𝐧 𝐦𝐚𝐬𝐲𝐚𝐫𝐚𝐤𝐚𝐭 𝐦𝐞𝐥𝐚𝐥𝐮𝐢 𝐚𝐤𝐬𝐢 𝐬𝐨𝐬𝐢𝐚𝐥, 𝐤𝐞𝐫𝐣𝐚 𝐛𝐚𝐤𝐭𝐢, 𝐩𝐞𝐥𝐚𝐲𝐚𝐧𝐚𝐧 𝐤𝐚𝐬𝐢𝐡, 𝐝𝐚𝐧 𝐤𝐞𝐠𝐢𝐚𝐭𝐚𝐧 𝐬𝐨𝐥𝐢𝐝𝐚𝐫𝐢𝐭𝐚𝐬.</p>
-      <p style="text-align:justify;">⏩𝐌𝐞𝐧𝐣𝐚𝐝𝐢 𝐬𝐚𝐤𝐬𝐢 𝐊𝐫𝐢𝐬𝐭𝐮𝐬 𝐝𝐚𝐥𝐚𝐦 𝐤𝐞𝐡𝐢𝐝𝐮𝐩𝐚𝐧 𝐬𝐞𝐡𝐚𝐫𝐢-𝐡𝐚𝐫𝐢 𝐝𝐞𝐧𝐠𝐚𝐧 𝐦𝐞𝐦𝐛𝐚𝐰𝐚 𝐝𝐚𝐦𝐩𝐚𝐤 𝐩𝐨𝐬𝐢𝐭𝐢𝐟 𝐝𝐢 𝐬𝐞𝐤𝐨𝐥𝐚𝐡, 𝐤𝐞𝐥𝐮𝐚𝐫𝐠𝐚, 𝐝𝐚𝐧 𝐥𝐢𝐧𝐠𝐤𝐮𝐧𝐠𝐚𝐧 𝐦𝐚𝐬𝐲𝐚𝐫𝐚𝐤𝐚𝐭.</p>
+  <!-- Slider Divisi / Devosi -->
+  <button class="add-button" onclick="addNewCard()">+ Tambah Divisi</button>
+  <div class="slider-container" id="sliderDivisi">
+    <div class="card" onclick="openModal('𝐆𝐋𝐎𝐑𝐈𝐀 𝐉𝐔𝐌𝐈','Divisi Liturgi','https://via.placeholder.com/100','Divisi Kegiatan OMK.')">
+      <img src="https://via.placeholder.com/100" alt="Divisi Kegiatan">
+      <h3>𝐆𝐋𝐎𝐑𝐈𝐀 𝐉𝐔𝐌𝐈</h3>
+      <p>Divisi Liturgi</p>
     </div>
-  </main>
+    <div class="card" onclick="openModal('𝐑𝐀𝐓𝐍𝐀','Divisi Liturgi','https://via.placeholder.com/100','Divisi Liturgi OMK.')">
+      <img src="https://via.placeholder.com/100" alt="Divisi Liturgi">
+      <h3>𝐑𝐀𝐓𝐍𝐀</h3>
+      <p>Divisi Kreativitas & Seni</p>
+    </div>
+  </div>
 
-  <main class="content">
-  <a href="https://heriyandi9494-cloud.github.io/struktur-omk/" target="_blank">𝐒𝐓𝐑𝐔𝐊𝐓𝐔𝐑 𝐎𝐑𝐆𝐀𝐍𝐈𝐒𝐀𝐒𝐈 𝐎𝐌𝐊 𝐒𝐄𝐊𝐎𝐍𝐀𝐔</a>
-
-<div class="tree">
-  <ul>
-    <li><div>Pembina<br>(HERI)</div></li>
-    <li><div>Ketua<br>(MARISA RISMA)</div></li>
-  </ul>
-
-  <ul>
-    <li><div>Wakil Ketua<br>(IKNASIUS KARLO)</div></li>
-    <li><div>Sekretaris<br>(YULITA TIKA)</div></li>
-    <li><div>Bendahara<br>(IKNASIUS KARLO)</div></li>
-  </ul>
 </div>
-</main>
 
-  <div class="floating-bubbles">
-    <a href="https://facebook.com" class="bubble fb"></a>
-    <a href="https://wa.me/6282252843545" class="bubble wa"></a>
-    <a href="https://instagram.com" class="bubble ig"></a>
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modal-img" src="" alt="">
+    <h3 id="modal-name"></h3>
+    <p id="modal-role"></p>
+    <p id="modal-bio"></p>
   </div>
+</div>
+
+<script>
+  // Modal
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalName = document.getElementById('modal-name');
+  const modalRole = document.getElementById('modal-role');
+  const modalBio = document.getElementById('modal-bio');
+
+  function openModal(name, role, img, bio){
+    modal.style.display = 'block';
+    modalImg.src = img;
+    modalName.textContent = name;
+    modalRole.textContent = role;
+    modalBio.textContent = bio;
+  }
+
+  function closeModal(){
+    modal.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    if(event.target == modal){
+      closeModal();
+    }
+  }
+
+  // Animasi masuk kartu
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.2});
+
+  cards.forEach(card => observer.observe(card));
+
+  // Fungsi hapus card
+  function removeCard(cardElement, name){
+    cardElement.remove();
+    let savedCards = JSON.parse(localStorage.getItem('sliderCards')) || [];
+    savedCards = savedCards.filter(c => c.name !== name);
+    localStorage.setItem('sliderCards', JSON.stringify(savedCards));
+  }
+
+  // Tambah card baru
+  function addNewCard() {
+    let name = prompt("Nama anggota:");
+    if(!name) return;
+    let role = prompt("Jabatan / Divisi:");
+    if(!role) return;
+    let img = prompt("Link gambar (URL):", "https://via.placeholder.com/100");
+    if(!img) img = "https://via.placeholder.com/100";
+    let bio = prompt("Keterangan / Bio:");
+
+    const slider = document.getElementById('sliderDivisi');
+    const card = document.createElement('div');
+    card.classList.add('card', 'show');
+    card.onclick = () => openModal(name, role, img, bio);
+    card.innerHTML = `<img src="${img}" alt="${role}"><h3>${name}</h3><p>${role}</p>`;
+
+    // tombol hapus
+    const removeBtn = document.createElement('span');
+    removeBtn.textContent = '×';
+    removeBtn.classList.add('remove-btn');
+    removeBtn.onclick = (e) => {
+      e.stopPropagation();
+      removeCard(card, name);
+    };
+    card.appendChild(removeBtn);
+
+    slider.appendChild(card);
+
+    // Simpan ke localStorage
+    let savedCards = JSON.parse(localStorage.getItem('sliderCards')) || [];
+    savedCards.push({name, role, img, bio});
+    localStorage.setItem('sliderCards', JSON.stringify(savedCards));
+  }
+
+  // Load data dari localStorage saat halaman dibuka
+  window.addEventListener('DOMContentLoaded', () => {
+    let savedCards = JSON.parse(localStorage.getItem('sliderCards')) || [];
+    const slider = document.getElementById('sliderDivisi');
+    savedCards.forEach(c => {
+      const card = document.createElement('div');
+      card.classList.add('card', 'show');
+      card.onclick = () => openModal(c.name, c.role, c.img, c.bio);
+      card.innerHTML = `<img src="${c.img}" alt="${c.role}"><h3>${c.name}</h3><p>${c.role}</p>`;
+
+      // tombol hapus
+      const removeBtn = document.createElement('span');
+      removeBtn.textContent = '×';
+      removeBtn.classList.add('remove-btn');
+      removeBtn.onclick = (e) => {
+        e.stopPropagation();
+        removeCard(card, c.name);
+      };
+      card.appendChild(removeBtn);
+
+      slider.appendChild(card);
+    });
+  });
+</script>
 
 </body>
 </html>
