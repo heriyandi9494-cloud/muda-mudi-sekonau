@@ -6,6 +6,126 @@
 <title>OMK Sekonau — Keuskupan Sanggau</title>
 
 <style>
+  /* =============== NAVIGATION DESKTOP =============== */
+.nav-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background: white;
+  padding: 6px;
+  transition: .3s ease;
+}
+
+/* Tombol menu mobile */
+.menu-toggle {
+  display: none;
+  background: #00c6d3;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  margin: 8px;
+}
+
+/* --- BATANG NAVIGASI --- */
+.nav-item {
+  background: #f3f3f3;
+  padding: 8px 14px;
+  border: 1px solid rgb(81, 226, 221);
+  font-weight: bold;
+  position: relative;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+/* HOVER EFEK CAHAYA */
+.nav-item:hover {
+  background: #6edee9;
+  color: #12e655;
+  text-shadow: 0 0 5px #8806f3,
+               0 0 10px #f4f8f8,
+               0 0 15px #b3dde1,
+               0 0 20px #00eaff;
+  animation: glowPulse 1.2s infinite;
+}
+
+/* Dropdown Desktop */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid rgb(85, 229, 232);
+  z-index: 10;
+}
+.nav-item:hover .dropdown { display: block; }
+
+/* Dropdown Link */
+.dropdown a {
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid #40e8dd;
+}
+.dropdown a:hover { background: #64c8d3; }
+
+/* ======================================================
+                 NAVIGATION MOBILE
+====================================================== */
+@media (max-width: 768px) {
+
+  /* Tombol MENU muncul */
+  .menu-toggle {
+    display: block;
+    text-align: center;
+  }
+
+  /* Nav disembunyikan default */
+  .nav-container {
+    display: none;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  /* Buka-tutup NAV */
+  .nav-container.open {
+    display: flex;
+  }
+
+  /* Nav-item full width */
+  .nav-item {
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+    padding: 12px;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  /* Dropdown Mobile */
+  .dropdown {
+    position: relative;
+    top: 0;
+    border: none;
+    display: none;
+  }
+
+  /* Dropdown aktif */
+  .dropdown.show {
+    display: block;
+  }
+
+  /* Link dropdown full */
+  .dropdown a {
+    background: #e9fafa;
+  }
+}
+
 /* =============== GLOBAL =============== */
 body {
   margin: 0;
@@ -63,76 +183,6 @@ header h2 {
   margin: 0;
   font-size: 14px;
 }
-
-/* =============== NAVIGATION DESKTOP =============== */
-.nav-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  background: white;
-  padding: 6px;
-}
-/* --- BATANG NAVIGASI --- */
-.nav-item {
-  background: #f3f3f3;
-  padding: 8px 14px;
-  border: 1px solid rgb(81, 226, 221);
-  font-weight: bold;
-  position: relative;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: 0.3s ease;
-}
-/* --- HOVER EFEK CAHAYA --- */
-.nav-item:hover { background: #6edee9; }
-
-.dropdown {
-  display: none;
-  position: absolute;
-  top: 45px;
-  left: 0;
-  width: 100%;
-  background: white;
-  border: 1px solid rgb(85, 229, 232);
-  z-index: 10;
-}
-.nav-item:hover .dropdown { display: block; }
-.dropdown a {
-  padding: 10px;
-  display: block;
-  text-decoration: none;
-  color: #000;
-  border-bottom: 1px solid #40e8dd;
-}
-.dropdown a:hover { background: #64c8d3; }
-
-/* === TULISAN NAVIGASI BERCAYAYA === */
-.nav-item {
-  color: #000;
-  transition: 0.3s ease;
-}
-
-/* Efek cahaya saat hover */
-.nav-item:hover {
-  color: #12e655;
-  text-shadow: 0 0 5px #8806f3,
-               0 0 10px #f4f8f8,
-               0 0 15px #b3dde1,
-               0 0 20px #00eaff;
-}
-
-/* Jika ingin animasi glow berdenyut */
-@keyframes glowPulse {
-  0%   { text-shadow: 0 0 5px #29e552; }
-  50%  { text-shadow: 0 0 15px #0c0fe7; }
-  100% { text-shadow: 0 0 5px #df107e; }
-}
-
-.nav-item:hover {
-  animation: glowPulse 1.2s infinite;
-}
-
-
 /* =============== SLIDER =============== */
 .slider-run-container {
   width: 100%;
@@ -271,8 +321,12 @@ function putarMusik(){
   <h2>OMK ST PETRUS & PAULUS RASUL SEKONAU</h2>
 </header>
 
-<!-- NAV -->
+<!-- TOMBOL MENU MOBILE -->
+<div class="menu-toggle" onclick="toggleMenu()">☰ MENU</div>
+
+<!-- NAVIGATION -->
 <div class="nav-container">
+
   <div class="nav-item" onclick="putarMusik()">𝐁𝐄𝐑𝐀𝐍𝐃𝐀</div>
 
   <div class="nav-item">𝐏𝐑𝐎𝐅𝐈𝐋 ▾
@@ -298,6 +352,7 @@ function putarMusik(){
       <a href="https://heriyandi9494-cloud.github.io/dashboardaksipaskahdannatal/">𝐊𝐨𝐥𝐞𝐤𝐭𝐞 𝐎𝐌𝐊</a>
     </div>
   </div>
+
 </div>
 
 <!-- SLIDER -->
@@ -343,6 +398,23 @@ Peran utama OMK dalam Gereja: Menjadi penggerak kegiatan pastoral: Menjadi motor
   <a href="https://wa.me/628xxxx" target="_blank" class="bubble wa"></a>
   <a href="https://instagram.com" target="_blank" class="bubble ig"></a>
 </div>
+<script>
+function toggleMenu(){
+  document.querySelector(".nav-container").classList.toggle("open");
+}
+
+// Dropdown mobile event
+document.querySelectorAll(".nav-item").forEach(item=>{
+  item.addEventListener("click", function(e){
+    let drop = this.querySelector(".dropdown");
+
+    if(drop){
+      e.stopPropagation();
+      drop.classList.toggle("show");
+    }
+  });
+});
+</script>
 
 <footer>
   © 2025 OMK Stai St Petrus dan Paulus Rasul Sekonau Paroki Hati Kudus Yesus Rawak — Keuskupan Sanggau
