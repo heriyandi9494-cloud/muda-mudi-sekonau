@@ -19,7 +19,7 @@
 /* Tombol menu mobile */
 .menu-toggle {
   display: none;
-  background: #00c6d3;
+  background: #ef0b0b;
   padding: 10px 14px;
   border-radius: 6px;
   font-weight: bold;
@@ -32,7 +32,7 @@
 .nav-item {
   background: #f3f3f3;
   padding: 8px 14px;
-  border: 1px solid rgb(81, 226, 221);
+  border: 1px solid rgb(249, 252, 251);
   font-weight: bold;
   position: relative;
   cursor: pointer;
@@ -42,11 +42,11 @@
 
 /* HOVER EFEK CAHAYA */
 .nav-item:hover {
-  background: #6edee9;
-  color: #12e655;
+  background: #f1f5f5;
+  color: #1d12e6;
   text-shadow: 0 0 5px #8806f3,
                0 0 10px #f4f8f8,
-               0 0 15px #b3dde1,
+               0 0 15px #eef7f8,
                0 0 20px #00eaff;
   animation: glowPulse 1.2s infinite;
 }
@@ -58,8 +58,8 @@
   top: 42px;
   left: 0;
   width: 100%;
-  background: white;
-  border: 1px solid rgb(85, 229, 232);
+  background: rgb(246, 244, 244);
+  border: 1px solid rgb(225, 240, 240);
   z-index: 10;
 }
 .nav-item:hover .dropdown { display: block; }
@@ -69,10 +69,10 @@
   padding: 10px;
   display: block;
   text-decoration: none;
-  color: #000;
+  color: #15e3d5;
   border-bottom: 1px solid #40e8dd;
 }
-.dropdown a:hover { background: #64c8d3; }
+.dropdown a:hover { background: #eef3f4; }
 
 /* ======================================================
                  NAVIGATION MOBILE
@@ -139,7 +139,7 @@ body {
 .content {
   max-width: 900px;
   margin: 15px auto;
-  background: rgba(105, 209, 243, 0.88);
+  background: #f7f8fa;
   padding: 18px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(223, 7, 7, 0.15);
@@ -149,8 +149,9 @@ body {
 .marquee {
   overflow: hidden;
   white-space: nowrap;
-  background: rgba(255,255,255,0.8);
-  border-bottom: 3px solid gold;
+  background: rgba(48, 193, 241, 0.8);
+  border-bottom: 2px solid rgb(21, 21, 21);
+  border-top: 2px solid rgb(19, 20, 20);
   padding: 8px;
 }
 .marquee__track {
@@ -169,19 +170,19 @@ body {
 header {
   text-align: center;
   padding: 25px 10px;
-  background: rgba(90,220,250,0.85);
+  background: rgba(245, 246, 246, 0.85);
 }
 header img {
   width: 90px;
 }
 header h1 {
   margin: 5px 0 0;
-  font-size: 26px;
+  font-size: 32px;
   color: #b30000;
 }
 header h2 {
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;
 }
 /* =============== SLIDER =============== */
 .slider-run-container {
@@ -199,7 +200,7 @@ header h2 {
   height: 200px;
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(236, 2, 2, 0.3);
   transition: .3s;
 }
 .slider-run-container:hover .slider-run-track {
@@ -229,7 +230,7 @@ header h2 {
   border-radius: 50%;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(229, 3, 3, 0.3);
   transition: .3s;
 }
 .bubble:hover { transform: scale(1.2); }
@@ -242,8 +243,8 @@ header h2 {
 footer {
   text-align: center;
   padding: 10px;
-  background: rgba(32, 183, 203, 0.7);
-  color: #090909;
+  background: rgb(253, 255, 255);
+  color: #fdfcfc;
 }
 
 /* ======================================================
@@ -308,17 +309,17 @@ function putarMusik(){
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee__track">
-    <span>Selamat Datang di Website Resmi OMK Sekonau •</span>
-    <span>Datang untuk Melayani, Pergi untuk Bersaksi •</span>
-    <span>Bersatu Dalam Iman, Berkarya Bersama •</span>
+    <span>𝐒𝐞𝐥𝐚𝐦𝐚𝐭 𝐃𝐚𝐭𝐚𝐧𝐠 𝐝𝐢 𝐖𝐞𝐛𝐬𝐢𝐭𝐞 𝐑𝐞𝐬𝐦𝐢 𝐎𝐌𝐊 𝐒𝐞𝐤𝐨𝐧𝐚𝐮</span>
+    <span>𝐃𝐚𝐭𝐚𝐧𝐠 𝐮𝐧𝐭𝐮𝐤 𝐌𝐞𝐥𝐚𝐲𝐚𝐧𝐢, 𝐏𝐞𝐫𝐠𝐢 𝐮𝐧𝐭𝐮𝐤 𝐁𝐞𝐫𝐬𝐚𝐤𝐬𝐢</span>
+    <span>𝐁𝐞𝐫𝐬𝐚𝐭𝐮 𝐃𝐚𝐥𝐚𝐦 𝐈𝐦𝐚𝐧, 𝐁𝐞𝐫𝐤𝐚𝐫𝐲𝐚 𝐁𝐞𝐫𝐬𝐚𝐦𝐚</span>
   </div>
 </div>
 
 <!-- HEADER -->
 <header>
   <img src="https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png">
-  <h1>SELAMAT DATANG</h1>
-  <h2>OMK ST PETRUS & PAULUS RASUL SEKONAU</h2>
+  <h1>𝙾𝙼𝙺 𝚂𝚃 𝙿𝙴𝚃𝚁𝚄𝚂 𝙳𝙰𝙽 𝙿𝙰𝚄𝙻𝚄𝚂 𝚁𝙰𝚂𝚄𝙻 </h1>
+  <h2>𝚂𝙴𝙻𝙰𝙼𝙰𝚃 𝙳𝙰𝚃𝙰𝙽𝙶</h2>
 </header>
 
 <!-- TOMBOL MENU MOBILE -->
@@ -347,7 +348,7 @@ function putarMusik(){
 
   <div class="nav-item">𝐃𝐎𝐊𝐔𝐌𝐄𝐍 ▾
     <div class="dropdown">
-      <a href="#">𝐅𝐨𝐭𝐨</a>
+      <a href="#">𝐆𝐀𝐋𝐄𝐑𝐈</a>
       <a href="https://heriyandi9494-cloud.github.io/akses-login-omk/" target="_blank">𝐃𝐚𝐭𝐚 𝐎𝐌𝐊</a>
       <a href="https://heriyandi9494-cloud.github.io/dashboardaksipaskahdannatal/">𝐊𝐨𝐥𝐞𝐤𝐭𝐞 𝐎𝐌𝐊</a>
     </div>
