@@ -1,424 +1,170 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OMK Sekonau — Keuskupan Sanggau</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝐎𝐌𝐊 𝐒𝐞𝐤𝐨𝐧𝐚𝐮 — 𝐊𝐞𝐮𝐬𝐤𝐮𝐩𝐚𝐧 𝐒𝐚𝐧𝐠𝐠𝐚𝐮</title>
+
+<!-- Bootstrap CSS CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
-  /* =============== NAVIGATION DESKTOP =============== */
-.nav-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  background: white;
-  padding: 6px;
-  transition: .3s ease;
-}
-
-/* Tombol menu mobile */
-.menu-toggle {
-  display: none;
-  background: #ef0b0b;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  margin: 8px;
-}
-
-/* --- BATANG NAVIGASI --- */
-.nav-item {
-  background: #f3f3f3;
-  padding: 8px 14px;
-  border: 1px solid rgb(249, 252, 251);
-  font-weight: bold;
-  position: relative;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: 0.3s ease;
-}
-
-/* HOVER EFEK CAHAYA */
-.nav-item:hover {
-  background: #f1f5f5;
-  color: #1d12e6;
-  text-shadow: 0 0 5px #8806f3,
-               0 0 10px #f4f8f8,
-               0 0 15px #eef7f8,
-               0 0 20px #00eaff;
-  animation: glowPulse 1.2s infinite;
-}
-
-/* Dropdown Desktop */
-.dropdown {
-  display: none;
-  position: absolute;
-  top: 42px;
-  left: 0;
-  width: 100%;
-  background: rgb(246, 244, 244);
-  border: 1px solid rgb(225, 240, 240);
-  z-index: 10;
-}
-.nav-item:hover .dropdown { display: block; }
-
-/* Dropdown Link */
-.dropdown a {
-  padding: 10px;
-  display: block;
-  text-decoration: none;
-  color: #15e3d5;
-  border-bottom: 1px solid #40e8dd;
-}
-.dropdown a:hover { background: #eef3f4; }
-
-/* ======================================================
-                 NAVIGATION MOBILE
-====================================================== */
-@media (max-width: 768px) {
-
-  /* Tombol MENU muncul */
-  .menu-toggle {
-    display: block;
-    text-align: center;
-  }
-
-  /* Nav disembunyikan default */
-  .nav-container {
-    display: none;
-    flex-direction: column;
-    padding: 0;
-  }
-
-  /* Buka-tutup NAV */
-  .nav-container.open {
-    display: flex;
-  }
-
-  /* Nav-item full width */
-  .nav-item {
-    width: 100%;
-    text-align: center;
-    border-radius: 0;
-    padding: 12px;
-    border-left: 0;
-    border-right: 0;
-  }
-
-  /* Dropdown Mobile */
-  .dropdown {
-    position: relative;
-    top: 0;
-    border: none;
-    display: none;
-  }
-
-  /* Dropdown aktif */
-  .dropdown.show {
-    display: block;
-  }
-
-  /* Link dropdown full */
-  .dropdown a {
-    background: #e9fafa;
-  }
-}
-
-/* =============== GLOBAL =============== */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
   background-image: url('https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
-
-.content {
-  max-width: 900px;
-  margin: 15px auto;
-  background: #f7f8fa;
-  padding: 18px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(223, 7, 7, 0.15);
-}
-
-/* =============== MARQUEE =============== */
-.marquee {
-  overflow: hidden;
-  white-space: nowrap;
-  background: rgba(48, 193, 241, 0.8);
-  border-bottom: 2px solid rgb(21, 21, 21);
-  border-top: 2px solid rgb(19, 20, 20);
-  padding: 8px;
-}
-.marquee__track {
-  display: inline-block;
-  padding-left: 100%;
-  animation: marquee 35s linear infinite;
-  font-weight: bold;
-  letter-spacing: .5px;
-}
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-
-/* =============== HEADER =============== */
-header {
+.hero-section {
+  background: rgba(255, 255, 255, 0.85);
   text-align: center;
-  padding: 25px 10px;
-  background: rgba(245, 246, 246, 0.85);
-}
-header img {
-  width: 90px;
-}
-header h1 {
-  margin: 5px 0 0;
-  font-size: 32px;
-  color: #b30000;
-}
-header h2 {
-  margin: 0;
-  font-size: 18px;
-}
-/* =============== SLIDER =============== */
-.slider-run-container {
-  width: 100%;
-  overflow: hidden;
-  margin: 10px 0 20px;
-}
-.slider-run-track {
-  display: flex;
-  gap: 15px;
-  animation: slideRun 30s linear infinite;
-}
-.slider-run-track img {
-  width: 320px;
-  height: 200px;
+  padding: 60px 20px;
   border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 0 10px rgba(236, 2, 2, 0.3);
-  transition: .3s;
+  margin-bottom: 20px;
 }
-.slider-run-container:hover .slider-run-track {
-  animation-play-state: paused;
-}
-.slider-run-track img:hover {
-  transform: scale(1.05);
-}
-@keyframes slideRun {
-  from { transform: translateX(100%); }
-  to { transform: translateX(-100%); }
-}
-
-/* =============== BUBBLE SOSIAL =============== */
-.floating-bubbles {
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 1000;
-}
-.bubble {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 10px 30px rgba(229, 3, 3, 0.3);
-  transition: .3s;
-}
-.bubble:hover { transform: scale(1.2); }
-
-.bubble.fb { background-image: url("https://i.postimg.cc/fTSJMtYw/original-a29ce836969d14cfaa31c96d3ef6aab3.gif"); }
-.bubble.wa { background-image: url("https://i.postimg.cc/NfKpY4NM/whatsapp-call.gif"); }
-.bubble.ig { background-image: url("https://i.postimg.cc/sxkS3pXJ/18-26-48-450-512.gif"); }
-
-/* =============== FOOTER =============== */
-footer {
-  text-align: center;
-  padding: 10px;
-  background: rgb(253, 255, 255);
-  color: #fdfcfc;
-}
-
-/* ======================================================
-               RESPONSIVE MOBILE
-====================================================== */
-@media (max-width: 768px) {
-
-  header img { width: 70px; }
-  header h1 { font-size: 22px; }
-  .content { padding: 15px; }
-
-  /* slider mengecil otomatis */
-  .slider-run-track img {
-    width: 230px;
-    height: 150px;
-  }
-
-  /* bubble ikon mengecil */
-  .bubble {
-    width: 60px;
-    height: 60px;
-  }
-
-  /* NAVIGATION MENJADI MOBILE */
-  .nav-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .nav-item {
-    text-align: center;
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-
-  header img { width: 60px; }
-  .slider-run-track img {
-    width: 180px;
-    height: 120px;
-  }
-  .bubble {
-    width: 52px;
-    height: 52px;
-  }
+.floating-bubbles a {
+  display: block;
+  margin-bottom: 10px;
 }
 </style>
 </head>
-
 <body>
 
-<!-- AUDIO -->
-<audio id="klikAudio" src="https://drive.google.com/uc?export=download&id=1vutgz97cbZwIAQTgzDqT-JOz6QDxhBf8"></audio>
-<script>
-function putarMusik(){
-  let a = document.getElementById("klikAudio");
-  a.currentTime = 0;
-  a.play();
-}
-</script>
-
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee__track">
-    <span>𝐒𝐞𝐥𝐚𝐦𝐚𝐭 𝐃𝐚𝐭𝐚𝐧𝐠 𝐝𝐢 𝐖𝐞𝐛𝐬𝐢𝐭𝐞 𝐑𝐞𝐬𝐦𝐢 𝐎𝐌𝐊 𝐒𝐞𝐤𝐨𝐧𝐚𝐮</span>
-    <span>𝐃𝐚𝐭𝐚𝐧𝐠 𝐮𝐧𝐭𝐮𝐤 𝐌𝐞𝐥𝐚𝐲𝐚𝐧𝐢, 𝐏𝐞𝐫𝐠𝐢 𝐮𝐧𝐭𝐮𝐤 𝐁𝐞𝐫𝐬𝐚𝐤𝐬𝐢</span>
-    <span>𝐁𝐞𝐫𝐬𝐚𝐭𝐮 𝐃𝐚𝐥𝐚𝐦 𝐈𝐦𝐚𝐧, 𝐁𝐞𝐫𝐤𝐚𝐫𝐲𝐚 𝐁𝐞𝐫𝐬𝐚𝐦𝐚</span>
-  </div>
-</div>
-
-<!-- HEADER -->
-<header>
-  <img src="https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png">
-  <h1>𝙾𝙼𝙺 𝚂𝚃 𝙿𝙴𝚃𝚁𝚄𝚂 𝙳𝙰𝙽 𝙿𝙰𝚄𝙻𝚄𝚂 𝚁𝙰𝚂𝚄𝙻 </h1>
-  <h2>𝚂𝙴𝙻𝙰𝙼𝙰𝚃 𝙳𝙰𝚃𝙰𝙽𝙶</h2>
-</header>
-
-<!-- TOMBOL MENU MOBILE -->
-<div class="menu-toggle" onclick="toggleMenu()">☰ MENU</div>
-
-<!-- NAVIGATION -->
-<div class="nav-container">
-
-  <div class="nav-item" onclick="putarMusik()">𝐁𝐄𝐑𝐀𝐍𝐃𝐀</div>
-
-  <div class="nav-item">𝐏𝐑𝐎𝐅𝐈𝐋 ▾
-    <div class="dropdown">
-      <a href="#">𝐓𝐞𝐧𝐭𝐚𝐧𝐠 𝐎𝐌𝐊</a>
-      <a href="https://heriyandi9494-cloud.github.io/VISIMISI/" target="_blank">𝐕𝐢𝐬𝐢 & 𝐌𝐢𝐬𝐢</a>
-      <a href="https://heriyandi9494-cloud.github.io/struktur-omk/" target="_blank">𝐒𝐭𝐫𝐮𝐤𝐭𝐮𝐫</a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">𝐎𝐌𝐊 𝐒𝐄𝐊𝐎𝐍𝐀𝐔</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">𝐁𝐞𝐫𝐚𝐧𝐝𝐚</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">𝐏𝐫𝐨𝐟𝐢𝐥</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">𝐓𝐞𝐧𝐭𝐚𝐧𝐠 𝐎𝐌𝐊</a></li>
+            <li><a class="dropdown-item" href="https://heriyandi9494-cloud.github.io/VISIMISI/" target="_blank">𝐕𝐢𝐬𝐢 & 𝐌𝐢𝐬𝐢</a></li>
+            <li><a class="dropdown-item" href="https://heriyandi9494-cloud.github.io/struktur-omk/" target="_blank">𝐒𝐭𝐫𝐮𝐤𝐭𝐮𝐫</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">𝐊𝐞𝐠𝐢𝐚𝐭𝐚𝐧</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://heriyandi9494-cloud.github.io/BACA-ALKITAB/">𝐊𝐌𝐀 𝟑𝟏𝟐 𝐇𝐚𝐫𝐢</a></li>
+            <li><a class="dropdown-item" href="https://heriyandi9494-cloud.github.io/kmagroupwilayahkalimantan/">𝐊𝐌𝐀 𝐒𝐞𝐢𝐧𝐝𝐨𝐧𝐞𝐬𝐢𝐚</a></li>
+            <li><a class="dropdown-item" href="#">𝐀𝐜𝐚𝐫𝐚 𝐓𝐚𝐡𝐮𝐧𝐚𝐧</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">𝐃𝐨𝐤𝐮𝐦𝐞𝐧</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">𝐆𝐚𝐥𝐞𝐫𝐢</a></li>
+            <li><a class="dropdown-item" href="https://heriyandi9494-cloud.github.io/akses-login-omk/" target="_blank">𝐃𝐚𝐭𝐚 𝐎𝐌𝐊</a></li>
+            <li><a class="dropdown-item" href="https://heriyandi9494-cloud.github.io/dashboardaksipaskahdannatal/">𝐊𝐨𝐥𝐞𝐤𝐭𝐞 𝐎𝐌𝐊</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
 
-  <div class="nav-item">𝐊𝐄𝐆𝐈𝐀𝐓𝐀𝐍 ▾
-    <div class="dropdown">
-      <a href="https://heriyandi9494-cloud.github.io/BACA-ALKITAB/">𝐊𝐌𝐀𝟑𝟏𝟐𝐇𝐀𝐑𝐈</a>
-      <a href="https://heriyandi9494-cloud.github.io/kmagroupwilayahkalimantan/">𝐊𝐌𝐀𝐒𝐞𝐢𝐧𝐝𝐨𝐧𝐞𝐬𝐢𝐚</a>
-      <a href="#">𝐀𝐜𝐚𝐫𝐚 𝐓𝐚𝐡𝐮𝐧𝐚𝐧</a>
+<!-- Hero Section -->
+<div class="container hero-section">
+  <img src="https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png" class="img-fluid rounded mb-3" style="max-width:100px;">
+  <h1 class="display-5 fw-bold">𝐎𝐌𝐊 𝐒𝐓 𝐏𝐄𝐓𝐑𝐔𝐒 𝐃𝐀𝐍 𝐏𝐀𝐔𝐋𝐔𝐒 𝐑𝐀𝐒𝐔𝐋</h1>
+  <p class="lead">𝐒𝐄𝐊𝐎𝐍𝐀𝐔</p>
+</div>
+
+<!-- Slider (Bootstrap Carousel) -->
+<div id="omkCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://i.postimg.cc/Y9zpsr7r/sfklkzcz.webp" class="d-block w-100 carousel-img" alt="Slide 1">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/pr5g4t4s/Screenshot-16.png" class="d-block w-100 carousel-img" alt="Slide 2">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png" class="d-block w-100 carousel-img" alt="Slide 3">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.postimg.cc/pXfK28Bf/2025-merry-christmas-happy-new-year-3d-glod-text-number-social-media-post-design-10969655.webp" class="d-block w-100 carousel-img" alt="Slide 4">
     </div>
   </div>
-
-  <div class="nav-item">𝐃𝐎𝐊𝐔𝐌𝐄𝐍 ▾
-    <div class="dropdown">
-      <a href="#">𝐆𝐀𝐋𝐄𝐑𝐈</a>
-      <a href="https://heriyandi9494-cloud.github.io/akses-login-omk/" target="_blank">𝐃𝐚𝐭𝐚 𝐎𝐌𝐊</a>
-      <a href="https://heriyandi9494-cloud.github.io/dashboardaksipaskahdannatal/">𝐊𝐨𝐥𝐞𝐤𝐭𝐞 𝐎𝐌𝐊</a>
-    </div>
-  </div>
-
+  <button class="carousel-control-prev" type="button" data-bs-target="#omkCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#omkCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
 </div>
 
-<!-- SLIDER -->
-<div class="slider-run-container">
-  <div class="slider-run-track">
-    <img src="https://i.postimg.cc/Y9zpsr7r/sfklkzcz.webp">
-    <img src="https://i.postimg.cc/pr5g4t4s/Screenshot-16.png">
-    <img src="https://i.postimg.cc/RVjmS6X6/articles-My-Gsv-MX-news-g5hoqxs-Santo-Petrus-dan-Santo-Paulus-Rasul-001-removebg-preview.png">
-    <img src="https://i.postimg.cc/pXfK28Bf/2025-merry-christmas-happy-new-year-3d-glod-text-number-social-media-post-design-10969655.webp">
-  </div>
-</div>
-
-<!-- CONTENT -->
-<div class="content">
-  <h2>TENTANG OMK</h2>
-  <p style="text-align:justify;">OMK memiliki peran penting dalam Gereja sebagai penggerak, pembaharu, dan pewaris iman. </p>
-  <p style="text-align:justify;">Mereka aktif dalam pelayanan liturgi (misdinar, lektor, koor), pelayanan sosial (bakti sosial), serta misi pewartaan dengan cara-cara kreatif, seperti melalui media sosial dan kegiatan kreatif. Selain itu, OMK menjadi harapan Gereja untuk masa depan dan berperan sebagai jembatan antar generasi serta menjadi garda terdepan dalam mewujudkan nilai-nilai Kristiani di masyarakat. 
-Peran utama OMK dalam Gereja: Menjadi penggerak kegiatan pastoral: Menjadi motor penggerak untuk berbagai kegiatan gereja, seperti bakti sosial, drama Natal, dan pelayanan di altar </p>
-  <h3 style="text-align:justify;">Pelayan liturgi:  </h3>
-  <p style="text-align:justify;">Berpartisipasi dalam pelayanan saat Misa dan ibadah lainnya, menjadi misdinar, lektor, pemazmur, atau anggota koor. </p>
-  <h3 style="text-align:justify;">Pejembatan antar generasi: </h3>
-  <p style="text-align:justify;">Menjalin hubungan dan kerja sama antar generasi tua, membantu Gereja menjangkau umat yang lebih luas. </p>
-  <h3 style="text-align:justify;">Pewaris dan pembaharu: </h3>
-  <p style="text-align:justify;">OMK dipandang sebagai generasi penerus dan juga pembawa pembaharuan bagi Gereja di masa kini dan mendatang. Panggilan dan pelayanan OMK menjadi tempat bagi banyak pemuda untuk menemukan panggilan hidup, baik sebagai imam, biarawan-biarawati, atau dalam pelayanan di tengah masyarakat sebagai guru, tenaga medis, pengusaha, atau aktivis. OMK merupakan Wadah pengembangan diri dan persekutuan menyediakan wadah untuk mempererat persahabatan, menguatkan kebersamaan, serta mengembangkan kreativitas dan karakter yang bertanggung jawab </p>
-</div>
-
-<div class="content">
-  <h2>VISI</h2>
-  <p>Menjadi OMK yang beriman kuat, kreatif, dan siap melayani.</p>
-</div>
-
-<div class="content">
-  <h2>MISI</h2>
-  <p>⏩ Mengembangkan pembinaan iman melalui Kitab Suci & rekoleksi.</p>
-  <p>⏩ Menumbuhkan persaudaraan OMK melalui kegiatan kreatif.</p>
-  <p>⏩ Terlibat aktif dalam liturgi Gereja.</p>
-  <p>⏩ Melayani umat lewat aksi sosial.</p>
-</div>
-
-<!-- BUBBLE SOSIAL -->
-<div class="floating-bubbles">
-  <a href="https://facebook.com" target="_blank" class="bubble fb"></a>
-  <a href="https://wa.me/628xxxx" target="_blank" class="bubble wa"></a>
-  <a href="https://instagram.com" target="_blank" class="bubble ig"></a>
-</div>
-<script>
-function toggleMenu(){
-  document.querySelector(".nav-container").classList.toggle("open");
+<style>
+/* Carousel image responsive dan tidak terpotong */
+.carousel-img {
+  width: 100%;
+  height: 400px;         /* Tinggi default desktop */
+  object-fit: contain;    /* Gambar utuh tanpa terpotong */
+  background-color: #f7f7f7; /* Area kosong jika ada */
 }
 
-// Dropdown mobile event
-document.querySelectorAll(".nav-item").forEach(item=>{
-  item.addEventListener("click", function(e){
-    let drop = this.querySelector(".dropdown");
+/* Tablet */
+@media (max-width: 768px) {
+  .carousel-img {
+    height: 300px;
+  }
+}
 
-    if(drop){
-      e.stopPropagation();
-      drop.classList.toggle("show");
-    }
-  });
-});
-</script>
+/* HP kecil */
+@media (max-width: 480px) {
+  .carousel-img {
+    height: 200px;
+  }
+}
+</style>
 
-<footer>
-  © 2025 OMK Stai St Petrus dan Paulus Rasul Sekonau Paroki Hati Kudus Yesus Rawak — Keuskupan Sanggau
+<!-- Content Sections -->
+<div class="container mb-4">
+  <div class="card mb-3">
+    <div class="card-body">
+      <h2 class="card-title">𝐓𝐞𝐧𝐭𝐚𝐧𝐠 𝐎𝐌𝐊</h2>
+      <p class="card-text">OMK memiliki peran penting dalam Gereja sebagai penggerak, pembaharu, dan pewaris iman. Mereka aktif dalam pelayanan liturgi, sosial, serta misi pewartaan kreatif. OMK menjadi penggerak kegiatan pastoral dan motor penggerak Gereja.</p>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <h2 class="card-title">𝐕𝐢𝐬𝐢</h2>
+      <p class="card-text">Menjadi OMK yang beriman kuat, kreatif, dan siap melayani.</p>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <h2 class="card-title">𝐌𝐢𝐬𝐢</h2>
+      <ul>
+        <li>Mengembangkan pembinaan iman melalui Kitab Suci & rekoleksi.</li>
+        <li>Menumbuhkan persaudaraan OMK melalui kegiatan kreatif.</li>
+        <li>Terlibat aktif dalam liturgi Gereja.</li>
+        <li>Melayani umat lewat aksi sosial.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Social Bubbles -->
+<div class="position-fixed bottom-0 end-0 m-3 d-flex flex-column gap-2">
+  <a href="https://facebook.com" target="_blank" class="btn btn-primary rounded-circle" style="width:60px; height:60px; background-image:url('https://i.postimg.cc/fTSJMtYw/original-a29ce836969d14cfaa31c96d3ef6aab3.gif'); background-size:cover;"></a>
+  <a href="https://wa.me/6281318776636" target="_blank" class="btn btn-success rounded-circle" style="width:60px; height:60px; background-image:url('https://i.postimg.cc/NfKpY4NM/whatsapp-call.gif'); background-size:cover;"></a>
+  <a href="https://instagram.com" target="_blank" class="btn btn-danger rounded-circle" style="width:60px; height:60px; background-image:url('https://i.postimg.cc/sxkS3pXJ/18-26-48-450-512.gif'); background-size:cover;"></a>
+</div>
+
+<!-- Footer -->
+<footer class="bg-primary text-white text-center py-3 mt-4">
+  © 2025 𝘖𝘔𝘒 𝘚𝘵 𝘗𝘦𝘵𝘳𝘶𝘴 𝘥𝘢𝘯 𝘗𝘢𝘶𝘭𝘶𝘴 𝘙𝘢𝘴𝘶𝘭 𝘚𝘦𝘬𝘰𝘯𝘢𝘶 𝘗𝘢𝘳𝘰𝘬𝘪 𝘏𝘢𝘵𝘪 𝘒𝘶𝘥𝘶𝘴 𝘠𝘦𝘴𝘶𝘴 𝘙𝘢𝘸𝘢𝘬 — 𝘒𝘦𝘶𝘴𝘬𝘶𝘱𝘢𝘯 𝘚𝘢𝘯𝘨𝘨𝘢𝘶
 </footer>
 
 </body>
